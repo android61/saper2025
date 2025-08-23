@@ -15,11 +15,7 @@ class MinesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_mines)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mines)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
         findViewById<Button>(R.id.button_to_PP).setOnClickListener {
             val intent = Intent(this, WeaponCategoryActivity::class.java).apply {
                 // Кладем в Intent тип "противопехотные мины"
