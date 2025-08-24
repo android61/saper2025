@@ -4,6 +4,7 @@ package ru.cyberprot.saper2025
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.cyberprot.saper2025.ui.WeaponListFragment
+import androidx.appcompat.widget.SearchView
 
 class WeaponCategoryActivity : AppCompatActivity() {
 
@@ -22,6 +23,19 @@ class WeaponCategoryActivity : AppCompatActivity() {
                 .replace(R.id.fragment_container, fragment)
                 .commit()
         }
+        val searchView = findViewById<androidx.appcompat.widget.SearchView>(R.id.search_view)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Ничего не делаем при отправке
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val fragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as? WeaponListFragment
+                fragment?.filterList(newText.orEmpty())
+                return true
+            }
+        })
     }
 
     companion object {

@@ -50,4 +50,7 @@ class WeaponListFragment : Fragment() {
         viewModel.loadWeapons(requireContext(), type)
 
     }
+    fun filterList(query: String) {
+        viewModel.filterWeapons(query)
+    }
 }
