@@ -13,6 +13,8 @@ object WeaponRepository {
         return when (type) {
             "ppMines" -> wrapper.ppMines ?: emptyList()
             "ptMines" -> wrapper.ptMines ?: emptyList()
+            "pzrk" -> wrapper.pzrk ?: emptyList()
+            "ptrk" -> wrapper.ptrk ?: emptyList()
             else -> emptyList()
         }
     }

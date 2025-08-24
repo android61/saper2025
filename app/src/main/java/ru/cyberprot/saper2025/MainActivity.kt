@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MinesActivity::class.java)
             startActivity(intent)
         }
+        findViewById<Button>(R.id.button_to_RC).setOnClickListener {
+            val intent = Intent(this, RocketActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

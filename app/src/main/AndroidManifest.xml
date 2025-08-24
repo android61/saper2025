@@ -27,6 +27,10 @@
         <activity
             android:name=".MinesActivity"
             android:exported="false" />
+        <activity
+            android:name=".RocketActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
