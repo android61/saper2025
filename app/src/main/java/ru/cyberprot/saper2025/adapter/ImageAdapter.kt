@@ -7,7 +7,8 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import ru.cyberprot.saper2025.R
 
-class ImageAdapter(private val images: List<Int>) :
+// Изменяем 'private val' на 'private var'
+class ImageAdapter(private var images: List<Int>) :
     RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
     class ImageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -25,4 +26,12 @@ class ImageAdapter(private val images: List<Int>) :
     }
 
     override fun getItemCount() = images.size
+
+    // --- НОВЫЙ МЕТОД ДЛЯ ОБНОВЛЕНИЯ ДАННЫХ ---
+    fun updateImages(newImages: List<Int>) {
+        // Обновляем список изображений
+        images = newImages
+        // Уведомляем ViewPager2 об изменении данных, чтобы он перерисовал элементы
+        notifyDataSetChanged()
+    }
 }
