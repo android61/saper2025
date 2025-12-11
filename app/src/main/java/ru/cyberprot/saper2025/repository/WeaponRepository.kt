@@ -15,6 +15,8 @@ object WeaponRepository {
             "ptMines" -> wrapper.ptMines ?: emptyList()
             "pzrk" -> wrapper.pzrk ?: emptyList()
             "ptrk" -> wrapper.ptrk ?: emptyList()
+            "otrk" -> wrapper.otrk ?: emptyList()
+            "rszo" -> wrapper.rszo ?: emptyList()
             else -> emptyList()
         }
     }

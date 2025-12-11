@@ -46,16 +46,7 @@
         app:srcCompat="@drawable/ic_search24"
         android:contentDescription="Search" />
 
-    <Button
-        android:id="@+id/button_to_zrk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ЗРК"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toTopOf="@id/button_to_pzrk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+    
 
     <Button
         android:id="@+id/button_to_pzrk"
@@ -65,7 +56,7 @@
         app:layout_constraintBottom_toTopOf="@id/button_to_ptrk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_to_zrk"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         />
 
     <Button

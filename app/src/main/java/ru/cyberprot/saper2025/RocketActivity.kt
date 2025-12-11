@@ -29,5 +29,21 @@ class RocketActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        findViewById<Button>(R.id.button_to_otrk).setOnClickListener {
+            val intent = Intent(this, WeaponCategoryActivity::class.java).apply {
+                // Кладем в Intent тип "противотанковые мины"
+                putExtra(EXTRA_WEAPON_TYPE, "otrk")
+            }
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.button_to_rszo).setOnClickListener {
+            val intent = Intent(this, WeaponCategoryActivity::class.java).apply {
+                // Кладем в Intent тип "противотанковые мины"
+                putExtra(EXTRA_WEAPON_TYPE, "rszo")
+            }
+            startActivity(intent)
+        }
+
     }
 }
