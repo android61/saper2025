@@ -17,7 +17,10 @@ data class WeaponListWrapper(
     val pzrk: List<Weapon>? = null,
     val ptrk: List<Weapon>? = null,
     val otrk: List<Weapon>? = null,
-    val rszo: List<Weapon>? = null
+    val rszo: List<Weapon>? = null,
+    val handgrenade: List<Weapon>? = null,
+    val handlauncher: List<Weapon>? =  null
+
 
 
 

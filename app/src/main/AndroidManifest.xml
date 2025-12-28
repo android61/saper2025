@@ -30,6 +30,9 @@
         <activity
             android:name=".RocketActivity"
             android:exported="false" />
+        <activity
+            android:name=".InfantryActivity"
+            android:exported="false" />
 
     </application>
 

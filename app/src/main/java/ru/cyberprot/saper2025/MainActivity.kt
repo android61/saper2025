@@ -22,5 +22,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        findViewById<Button>(R.id.button_to_infantry).setOnClickListener {
+            val intent = Intent(this, InfantryActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
