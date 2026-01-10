@@ -1,6 +1,5 @@
 package ru.cyberprot.saper2025.ui
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.cyberprot.saper2025.R
 import ru.cyberprot.saper2025.adapter.WeaponAdapter
-import ru.cyberprot.saper2025.dto.Weapon
-import ru.cyberprot.saper2025.repository.WeaponRepository
 import ru.cyberprot.saper2025.viewmodel.WeaponListViewModel
 
 class WeaponListFragment : Fragment() {
@@ -26,6 +23,7 @@ class WeaponListFragment : Fragment() {
             return fragment
         }
     }
+
     private val viewModel: WeaponListViewModel by viewModels()
 
     override fun onCreateView(
@@ -40,16 +38,14 @@ class WeaponListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Подписываемся на изменения данных в ViewModel
         viewModel.items.observe(viewLifecycleOwner) { weaponList ->
-            // Когда данные приходят, обновляем адаптер
             adapter.submitList(weaponList)
         }
 
-        // Запускаем загрузку данных
-        viewModel.loadWeapons(requireContext(), type)
-
+        // ТЕПЕРЬ ПЕРЕДАЕМ ТОЛЬКО ТИП
+        viewModel.loadWeapons(type)
     }
+
     fun filterList(query: String) {
         viewModel.filterWeapons(query)
     }

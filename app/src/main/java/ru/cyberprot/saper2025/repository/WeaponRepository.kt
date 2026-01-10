@@ -8,18 +8,26 @@ import ru.cyberprot.saper2025.dto.WeaponListWrapper
 object WeaponRepository {
     fun getMinesByType(context: Context, type: String): List<Weapon> {
         val fileName = "datasample/${type}.json"
-        val jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
-        val wrapper = Gson().fromJson(jsonString, WeaponListWrapper::class.java)
-        return when (type) {
-            "ppMines" -> wrapper.ppMines ?: emptyList()
-            "ptMines" -> wrapper.ptMines ?: emptyList()
-            "pzrk" -> wrapper.pzrk ?: emptyList()
-            "ptrk" -> wrapper.ptrk ?: emptyList()
-            "otrk" -> wrapper.otrk ?: emptyList()
-            "rszo" -> wrapper.rszo ?: emptyList()
-            "handgrenade" -> wrapper.handgrenade ?: emptyList()
-            "handlauncher" -> wrapper.handlauncher ?: emptyList()
-            else -> emptyList()
+
+        // Метод .use гарантирует закрытие потока (предотвращает утечку close)
+        val jsonString = try {
+            context.assets.open(fileName).bufferedReader().use { it.readText() }
+        } catch (e: Exception) {
+            return emptyList()
         }
+
+        val wrapper = Gson().fromJson(jsonString, WeaponListWrapper::class.java)
+
+        return when (type) {
+            "ppMines"        -> wrapper.ppMines
+            "ptMines"        -> wrapper.ptMines
+            "pzrk"           -> wrapper.pzrk
+            "ptrk"           -> wrapper.ptrk
+            "otrk"           -> wrapper.otrk
+            "rszo"           -> wrapper.rszo
+            "handgrenade"    -> wrapper.handgrenade
+            "handlauncher"   -> wrapper.handlauncher
+            else             -> emptyList()
+        } ?: emptyList() // Если в JSON поле null, возвращаем пустой список
     }
 }
