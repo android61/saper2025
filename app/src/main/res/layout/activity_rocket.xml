@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/mines"
+    android:id="@+id/rocket"
     android:fitsSystemWindows="true"
     tools:context=".WeaponCategoryActivity">
 
@@ -13,85 +13,82 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
+        android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Иконки меню и поиска на Toolbar -->
-    <ImageView
-        android:id="@+id/imageMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:srcCompat="@drawable/ic_menu24"
-        android:contentDescription="Menu" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Ракетные боеприпасы"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/ic_menu24"
+        />
 
     <ImageView
         android:id="@+id/imageSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        app:layout_constraintDimensionRatio="1:1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:elevation="5dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Search"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
         app:srcCompat="@drawable/ic_search24"
-        android:contentDescription="Search" />
+        app:tint="@android:color/black" />
 
-    
 
-    <Button
+    <LinearLayout
+        android:id="@+id/buttons_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <com.google.android.material.button.MaterialButton
         android:id="@+id/button_to_pzrk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ПЗРК"
-        app:layout_constraintBottom_toTopOf="@id/button_to_ptrk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        />
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="12dp"
+            android:text="ПЗРК"
+            app:cornerRadius="12dp"
+            app:strokeWidth="1dp" />
 
-    <Button
+        <com.google.android.material.button.MaterialButton
         android:id="@+id/button_to_ptrk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ПТРК"
-        app:layout_constraintTop_toBottomOf="@id/button_to_pzrk"
-        app:layout_constraintBottom_toTopOf="@id/button_to_otrk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="12dp"
+            android:text="ПТРК"
+            app:cornerRadius="12dp"
+            app:strokeWidth="1dp" />
 
-    <Button
+        <com.google.android.material.button.MaterialButton
         android:id="@+id/button_to_otrk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ОТРК"
-        app:layout_constraintTop_toBottomOf="@id/button_to_ptrk"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button_to_rszo"
-        />
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="12dp"
+            android:text="ОТРК"
+            app:cornerRadius="12dp"
+            app:strokeWidth="1dp" />
 
-    <Button
+        <com.google.android.material.button.MaterialButton
         android:id="@+id/button_to_rszo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="РСЗО"
-        app:layout_constraintTop_toBottomOf="@id/button_to_otrk"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="12dp"
+            android:text="РСЗО"
+            app:cornerRadius="12dp"
+            app:strokeWidth="1dp" />
 
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fragment_container"

@@ -1,17 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
     id 'kotlin-parcelize'
 }
 
 android {
     namespace 'ru.cyberprot.saper2025'
-    compileSdk 36
+    compileSdk 34
 
     defaultConfig {
         applicationId "ru.cyberprot.saper2025"
-        minSdk 28
-        targetSdk 36
+        minSdk 26
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -25,14 +26,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = '17'
     }
     buildFeatures {
         viewBinding true
+        compose true
+    }
+
+    // ДОБАВЛЕНО: Явное указание версии компилятора Compose.
+    // Это решает 90% проблем с вылетами при запуске.
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
 }
 
@@ -40,13 +48,37 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.7.7'
     implementation 'androidx.navigation:navigation-ui-ktx:2.7.7'
     implementation 'com.google.code.gson:gson:2.10.1'
-    implementation libs.androidx.core.ktx
+
+    // --- ИСПРАВЛЕНИЕ ЗАВИСИМОСТЕЙ ---
+    // Мы убрали libs.* и прописали версии вручную, чтобы они подходили под SDK 34
+
+    // Вместо libs.androidx.core.ktx (который требует SDK 35)
+    implementation 'androidx.core:core-ktx:1.13.1'
+
+    // Вместо libs.androidx.activity (который требует SDK 35)
+    implementation 'androidx.activity:activity-ktx:1.9.3'
+
+    // Вместо libs.androidx.recyclerview (который требует SDK 35)
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+
     implementation libs.androidx.appcompat
     implementation libs.material
-    implementation libs.androidx.activity
     implementation libs.androidx.constraintlayout
-    implementation libs.androidx.recyclerview
+
+    // Жизненный цикл для Compose
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.4"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4"
+
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
+
+    // Библиотеки Compose (Stable BOM)
+    implementation platform("androidx.compose:compose-bom:2024.06.00")
+    implementation "androidx.compose.ui:ui"
+    implementation "androidx.compose.material3:material3"
+    implementation "androidx.compose.ui:ui-tooling-preview"
+
+    // Интеграция с Activity (версия 1.9.3 совместима с SDK 34)
+    implementation "androidx.activity:activity-compose:1.9.3"
 }

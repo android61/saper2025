@@ -33,6 +33,9 @@
         <activity
             android:name=".InfantryActivity"
             android:exported="false" />
+        <activity
+            android:name=".CalculateActivity"
+            android:exported="false" />
 
     </application>
 
